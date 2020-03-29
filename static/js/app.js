@@ -4,6 +4,9 @@ const tableData = data;
 // Reference the HTML table using d3
 var tbody = d3.select("tbody");
 
+//varable to hold filters
+var filters ={};
+
 // function takes the data and build a table
 function buildTable(data) {
     tbody.html("");
@@ -14,6 +17,11 @@ function buildTable(data) {
             cell.text(val);
         });
     });
+};
+
+//new function to handle click
+function updateFilters() {
+
 };
 
 //function to handle click
