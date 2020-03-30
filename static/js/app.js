@@ -67,25 +67,21 @@ function filterTable() {
     let filteredData = tableData;
 
     for (var key in filters) {
+        if (key === "datetime") {
         filteredData = filteredData.filter(row => row.datetime === filters[key]);
-        filteredData = filteredData.filter(row => row.city === filters[key]);
-        filteredData = filteredData.filter(row => row.state === filters[key]);
-        filteredData = filteredData.filter(row => row.country === filters[key]);
-        filteredData = filteredData.filter(row => row.shape === filters[key]);
-    };
-
-    buildTable(filteredData);
-};
-
-//function to handle click
-function handleClick() {
-    let date = d3.select("#datetime").property("value");
-    let filteredData = tableData;
-    if (date) {
-        filteredData = filteredData.filter(row => row.datetime ===date);
+        } else if (key === "city") {
+            filteredData = filteredData.filter(row => row.city === filters[key]);
+        } else if (key === "state") {
+            filteredData = filteredData.filter(row => row.state === filters[key]);
+        } else if (key === "country") {
+            filteredData = filteredData.filter(row => row.country === filters[key]);
+        } else if (key === "shape") {
+            filteredData = filteredData.filter(row => row.shape === filters[key]);
+        } else {
+            filteredData = filteredData;
+        };   
     };
     buildTable(filteredData);
-    console.log("Button was pressed");
 };
 
 // what happens when button is clicked 
